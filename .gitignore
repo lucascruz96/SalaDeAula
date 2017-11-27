@@ -8,8 +8,8 @@
 /api/SalaDeAula/bin/roslyn
 /api/SalaDeAula/bin
 /api/SalaDeAula/obj
-/app/SalaDeAula/node_modules/
-/app/SalaDeAula/temp/
+/app/node_modules/
+/app/temp/
 *.DS_Store
 *.log
 *.swp

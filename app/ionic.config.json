@@ -1,0 +1,8 @@
+{
+  "name": "SalaDeAula",
+  "app_id": "9a9b5e8d",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
