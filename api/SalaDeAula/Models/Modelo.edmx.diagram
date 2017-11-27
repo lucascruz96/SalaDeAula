@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="16c8cad5ad784407b9f4aa8bb87ba3c7" Name="Diagram1">
+        <EntityTypeShape EntityType="SalaDeAulaModel.alternativa" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalaDeAulaModel.atividade" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalaDeAulaModel.mensagem" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalaDeAulaModel.questao" Width="1.5" PointX="1.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalaDeAulaModel.resposta" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalaDeAulaModel.turma" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalaDeAulaModel.usuario" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalaDeAulaModel.usuario_turma" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_alternativa_questao" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_resposta_alternativa" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_atividade_turma" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_questao_atividade" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_mensagem_turma" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_mensagem_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_resposta_questao" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_resposta_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_usuario_turma_turma" ManuallyRouted="false" />
+        <AssociationConnector Association="SalaDeAulaModel.FK_usuario_turma_usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

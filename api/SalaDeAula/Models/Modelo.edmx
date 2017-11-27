@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SalaDeAulaModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alternativa">
+          <Key>
+            <PropertyRef Name="codigo_alternativa" />
+          </Key>
+          <Property Name="codigo_alternativa" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_questao" Type="uint" Nullable="false" />
+          <Property Name="texto_alternativa" Type="text" Nullable="false" />
+          <Property Name="correta" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="atividade">
+          <Key>
+            <PropertyRef Name="codigo_atividade" />
+          </Key>
+          <Property Name="codigo_atividade" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_turma" Type="uint" Nullable="false" />
+          <Property Name="nome_atividade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="data_limite" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_criacao" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mensagem">
+          <Key>
+            <PropertyRef Name="codigo_mensagem" />
+          </Key>
+          <Property Name="codigo_mensagem" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_turma" Type="uint" Nullable="false" />
+          <Property Name="codigo_usuario" Type="uint" Nullable="false" />
+          <Property Name="texto" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_postagem" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="questao">
+          <Key>
+            <PropertyRef Name="codigo_questao" />
+          </Key>
+          <Property Name="codigo_questao" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_atividade" Type="uint" Nullable="false" />
+          <Property Name="texto_questao" Type="text" Nullable="false" />
+          <Property Name="valor" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="resposta">
+          <Key>
+            <PropertyRef Name="codigo_resposta" />
+          </Key>
+          <Property Name="codigo_resposta" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_usuario" Type="uint" Nullable="false" />
+          <Property Name="codigo_questao" Type="uint" Nullable="false" />
+          <Property Name="codigo_alternativa" Type="uint" Nullable="false" />
+          <Property Name="data_envio" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="turma">
+          <Key>
+            <PropertyRef Name="codigo_turma" />
+          </Key>
+          <Property Name="codigo_turma" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_turma" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="token_acesso" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="data_criacao" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="codigo_usuario" />
+          </Key>
+          <Property Name="codigo_usuario" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="token_usuario" Type="varchar" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario_turma">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_usuario" Type="uint" Nullable="false" />
+          <Property Name="codigo_turma" Type="uint" Nullable="false" />
+          <Property Name="professor" Type="bool" Nullable="false" />
+          <Property Name="data_entrada" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_alternativa_questao">
+          <End Role="questao" Type="Self.questao" Multiplicity="1" />
+          <End Role="alternativa" Type="Self.alternativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questao">
+              <PropertyRef Name="codigo_questao" />
+            </Principal>
+            <Dependent Role="alternativa">
+              <PropertyRef Name="codigo_questao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_atividade_turma">
+          <End Role="turma" Type="Self.turma" Multiplicity="1" />
+          <End Role="atividade" Type="Self.atividade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turma">
+              <PropertyRef Name="codigo_turma" />
+            </Principal>
+            <Dependent Role="atividade">
+              <PropertyRef Name="codigo_turma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mensagem_turma">
+          <End Role="turma" Type="Self.turma" Multiplicity="1" />
+          <End Role="mensagem" Type="Self.mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turma">
+              <PropertyRef Name="codigo_turma" />
+            </Principal>
+            <Dependent Role="mensagem">
+              <PropertyRef Name="codigo_turma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mensagem_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="mensagem" Type="Self.mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="codigo_usuario" />
+            </Principal>
+            <Dependent Role="mensagem">
+              <PropertyRef Name="codigo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_questao_atividade">
+          <End Role="atividade" Type="Self.atividade" Multiplicity="1" />
+          <End Role="questao" Type="Self.questao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="atividade">
+              <PropertyRef Name="codigo_atividade" />
+            </Principal>
+            <Dependent Role="questao">
+              <PropertyRef Name="codigo_atividade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_resposta_alternativa">
+          <End Role="alternativa" Type="Self.alternativa" Multiplicity="1" />
+          <End Role="resposta" Type="Self.resposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alternativa">
+              <PropertyRef Name="codigo_alternativa" />
+            </Principal>
+            <Dependent Role="resposta">
+              <PropertyRef Name="codigo_alternativa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_resposta_questao">
+          <End Role="questao" Type="Self.questao" Multiplicity="1" />
+          <End Role="resposta" Type="Self.resposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questao">
+              <PropertyRef Name="codigo_questao" />
+            </Principal>
+            <Dependent Role="resposta">
+              <PropertyRef Name="codigo_questao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_resposta_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="resposta" Type="Self.resposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="codigo_usuario" />
+            </Principal>
+            <Dependent Role="resposta">
+              <PropertyRef Name="codigo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_turma_turma">
+          <End Role="turma" Type="Self.turma" Multiplicity="1" />
+          <End Role="usuario_turma" Type="Self.usuario_turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turma">
+              <PropertyRef Name="codigo_turma" />
+            </Principal>
+            <Dependent Role="usuario_turma">
+              <PropertyRef Name="codigo_turma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_turma_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="usuario_turma" Type="Self.usuario_turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="codigo_usuario" />
+            </Principal>
+            <Dependent Role="usuario_turma">
+              <PropertyRef Name="codigo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SalaDeAulaModelStoreContainer">
+          <EntitySet Name="alternativa" EntityType="Self.alternativa" Schema="sala_de_aula" store:Type="Tables" />
+          <EntitySet Name="atividade" EntityType="Self.atividade" Schema="sala_de_aula" store:Type="Tables" />
+          <EntitySet Name="mensagem" EntityType="Self.mensagem" Schema="sala_de_aula" store:Type="Tables" />
+          <EntitySet Name="questao" EntityType="Self.questao" Schema="sala_de_aula" store:Type="Tables" />
+          <EntitySet Name="resposta" EntityType="Self.resposta" Schema="sala_de_aula" store:Type="Tables" />
+          <EntitySet Name="turma" EntityType="Self.turma" Schema="sala_de_aula" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="sala_de_aula" store:Type="Tables" />
+          <EntitySet Name="usuario_turma" EntityType="Self.usuario_turma" Schema="sala_de_aula" store:Type="Tables" />
+          <AssociationSet Name="FK_alternativa_questao" Association="Self.FK_alternativa_questao">
+            <End Role="questao" EntitySet="questao" />
+            <End Role="alternativa" EntitySet="alternativa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_atividade_turma" Association="Self.FK_atividade_turma">
+            <End Role="turma" EntitySet="turma" />
+            <End Role="atividade" EntitySet="atividade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mensagem_turma" Association="Self.FK_mensagem_turma">
+            <End Role="turma" EntitySet="turma" />
+            <End Role="mensagem" EntitySet="mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mensagem_usuario" Association="Self.FK_mensagem_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="mensagem" EntitySet="mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questao_atividade" Association="Self.FK_questao_atividade">
+            <End Role="atividade" EntitySet="atividade" />
+            <End Role="questao" EntitySet="questao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_resposta_alternativa" Association="Self.FK_resposta_alternativa">
+            <End Role="alternativa" EntitySet="alternativa" />
+            <End Role="resposta" EntitySet="resposta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_resposta_questao" Association="Self.FK_resposta_questao">
+            <End Role="questao" EntitySet="questao" />
+            <End Role="resposta" EntitySet="resposta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_resposta_usuario" Association="Self.FK_resposta_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="resposta" EntitySet="resposta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_turma_turma" Association="Self.FK_usuario_turma_turma">
+            <End Role="turma" EntitySet="turma" />
+            <End Role="usuario_turma" EntitySet="usuario_turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_turma_usuario" Association="Self.FK_usuario_turma_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_turma" EntitySet="usuario_turma" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalaDeAulaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="alternativa">
+          <Key>
+            <PropertyRef Name="codigo_alternativa" />
+          </Key>
+          <Property Name="codigo_alternativa" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_questao" Type="Int64" Nullable="false" />
+          <Property Name="texto_alternativa" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correta" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="questao" Relationship="Self.FK_alternativa_questao" FromRole="alternativa" ToRole="questao" />
+          <NavigationProperty Name="resposta" Relationship="Self.FK_resposta_alternativa" FromRole="alternativa" ToRole="resposta" />
+        </EntityType>
+        <EntityType Name="atividade">
+          <Key>
+            <PropertyRef Name="codigo_atividade" />
+          </Key>
+          <Property Name="codigo_atividade" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_turma" Type="Int64" Nullable="false" />
+          <Property Name="nome_atividade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_limite" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_criacao" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="turma" Relationship="Self.FK_atividade_turma" FromRole="atividade" ToRole="turma" />
+          <NavigationProperty Name="questao" Relationship="Self.FK_questao_atividade" FromRole="atividade" ToRole="questao" />
+        </EntityType>
+        <EntityType Name="mensagem">
+          <Key>
+            <PropertyRef Name="codigo_mensagem" />
+          </Key>
+          <Property Name="codigo_mensagem" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_turma" Type="Int64" Nullable="false" />
+          <Property Name="codigo_usuario" Type="Int64" Nullable="false" />
+          <Property Name="texto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_postagem" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="turma" Relationship="Self.FK_mensagem_turma" FromRole="mensagem" ToRole="turma" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK_mensagem_usuario" FromRole="mensagem" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="questao">
+          <Key>
+            <PropertyRef Name="codigo_questao" />
+          </Key>
+          <Property Name="codigo_questao" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_atividade" Type="Int64" Nullable="false" />
+          <Property Name="texto_questao" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="alternativa" Relationship="Self.FK_alternativa_questao" FromRole="questao" ToRole="alternativa" />
+          <NavigationProperty Name="atividade" Relationship="Self.FK_questao_atividade" FromRole="questao" ToRole="atividade" />
+          <NavigationProperty Name="resposta" Relationship="Self.FK_resposta_questao" FromRole="questao" ToRole="resposta" />
+        </EntityType>
+        <EntityType Name="resposta">
+          <Key>
+            <PropertyRef Name="codigo_resposta" />
+          </Key>
+          <Property Name="codigo_resposta" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_usuario" Type="Int64" Nullable="false" />
+          <Property Name="codigo_questao" Type="Int64" Nullable="false" />
+          <Property Name="codigo_alternativa" Type="Int64" Nullable="false" />
+          <Property Name="data_envio" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="alternativa" Relationship="Self.FK_resposta_alternativa" FromRole="resposta" ToRole="alternativa" />
+          <NavigationProperty Name="questao" Relationship="Self.FK_resposta_questao" FromRole="resposta" ToRole="questao" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK_resposta_usuario" FromRole="resposta" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="turma">
+          <Key>
+            <PropertyRef Name="codigo_turma" />
+          </Key>
+          <Property Name="codigo_turma" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_turma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token_acesso" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_criacao" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="atividade" Relationship="Self.FK_atividade_turma" FromRole="turma" ToRole="atividade" />
+          <NavigationProperty Name="mensagem" Relationship="Self.FK_mensagem_turma" FromRole="turma" ToRole="mensagem" />
+          <NavigationProperty Name="usuario_turma" Relationship="Self.FK_usuario_turma_turma" FromRole="turma" ToRole="usuario_turma" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="codigo_usuario" />
+          </Key>
+          <Property Name="codigo_usuario" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token_usuario" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="mensagem" Relationship="Self.FK_mensagem_usuario" FromRole="usuario" ToRole="mensagem" />
+          <NavigationProperty Name="resposta" Relationship="Self.FK_resposta_usuario" FromRole="usuario" ToRole="resposta" />
+          <NavigationProperty Name="usuario_turma" Relationship="Self.FK_usuario_turma_usuario" FromRole="usuario" ToRole="usuario_turma" />
+        </EntityType>
+        <EntityType Name="usuario_turma">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_usuario" Type="Int64" Nullable="false" />
+          <Property Name="codigo_turma" Type="Int64" Nullable="false" />
+          <Property Name="professor" Type="Boolean" Nullable="false" />
+          <Property Name="data_entrada" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="turma" Relationship="Self.FK_usuario_turma_turma" FromRole="usuario_turma" ToRole="turma" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_turma_usuario" FromRole="usuario_turma" ToRole="usuario" />
+        </EntityType>
+        <Association Name="FK_alternativa_questao">
+          <End Role="questao" Type="Self.questao" Multiplicity="1" />
+          <End Role="alternativa" Type="Self.alternativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questao">
+              <PropertyRef Name="codigo_questao" />
+            </Principal>
+            <Dependent Role="alternativa">
+              <PropertyRef Name="codigo_questao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_resposta_alternativa">
+          <End Role="alternativa" Type="Self.alternativa" Multiplicity="1" />
+          <End Role="resposta" Type="Self.resposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alternativa">
+              <PropertyRef Name="codigo_alternativa" />
+            </Principal>
+            <Dependent Role="resposta">
+              <PropertyRef Name="codigo_alternativa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_atividade_turma">
+          <End Role="turma" Type="Self.turma" Multiplicity="1" />
+          <End Role="atividade" Type="Self.atividade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turma">
+              <PropertyRef Name="codigo_turma" />
+            </Principal>
+            <Dependent Role="atividade">
+              <PropertyRef Name="codigo_turma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_questao_atividade">
+          <End Role="atividade" Type="Self.atividade" Multiplicity="1" />
+          <End Role="questao" Type="Self.questao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="atividade">
+              <PropertyRef Name="codigo_atividade" />
+            </Principal>
+            <Dependent Role="questao">
+              <PropertyRef Name="codigo_atividade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mensagem_turma">
+          <End Role="turma" Type="Self.turma" Multiplicity="1" />
+          <End Role="mensagem" Type="Self.mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turma">
+              <PropertyRef Name="codigo_turma" />
+            </Principal>
+            <Dependent Role="mensagem">
+              <PropertyRef Name="codigo_turma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mensagem_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="mensagem" Type="Self.mensagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="codigo_usuario" />
+            </Principal>
+            <Dependent Role="mensagem">
+              <PropertyRef Name="codigo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_resposta_questao">
+          <End Role="questao" Type="Self.questao" Multiplicity="1" />
+          <End Role="resposta" Type="Self.resposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questao">
+              <PropertyRef Name="codigo_questao" />
+            </Principal>
+            <Dependent Role="resposta">
+              <PropertyRef Name="codigo_questao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_resposta_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="resposta" Type="Self.resposta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="codigo_usuario" />
+            </Principal>
+            <Dependent Role="resposta">
+              <PropertyRef Name="codigo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_turma_turma">
+          <End Role="turma" Type="Self.turma" Multiplicity="1" />
+          <End Role="usuario_turma" Type="Self.usuario_turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turma">
+              <PropertyRef Name="codigo_turma" />
+            </Principal>
+            <Dependent Role="usuario_turma">
+              <PropertyRef Name="codigo_turma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_turma_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="usuario_turma" Type="Self.usuario_turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="codigo_usuario" />
+            </Principal>
+            <Dependent Role="usuario_turma">
+              <PropertyRef Name="codigo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SalaDeAulaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alternativa" EntityType="Self.alternativa" />
+          <EntitySet Name="atividade" EntityType="Self.atividade" />
+          <EntitySet Name="mensagem" EntityType="Self.mensagem" />
+          <EntitySet Name="questao" EntityType="Self.questao" />
+          <EntitySet Name="resposta" EntityType="Self.resposta" />
+          <EntitySet Name="turma" EntityType="Self.turma" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="usuario_turma" EntityType="Self.usuario_turma" />
+          <AssociationSet Name="FK_alternativa_questao" Association="Self.FK_alternativa_questao">
+            <End Role="questao" EntitySet="questao" />
+            <End Role="alternativa" EntitySet="alternativa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_resposta_alternativa" Association="Self.FK_resposta_alternativa">
+            <End Role="alternativa" EntitySet="alternativa" />
+            <End Role="resposta" EntitySet="resposta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_atividade_turma" Association="Self.FK_atividade_turma">
+            <End Role="turma" EntitySet="turma" />
+            <End Role="atividade" EntitySet="atividade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questao_atividade" Association="Self.FK_questao_atividade">
+            <End Role="atividade" EntitySet="atividade" />
+            <End Role="questao" EntitySet="questao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mensagem_turma" Association="Self.FK_mensagem_turma">
+            <End Role="turma" EntitySet="turma" />
+            <End Role="mensagem" EntitySet="mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mensagem_usuario" Association="Self.FK_mensagem_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="mensagem" EntitySet="mensagem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_resposta_questao" Association="Self.FK_resposta_questao">
+            <End Role="questao" EntitySet="questao" />
+            <End Role="resposta" EntitySet="resposta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_resposta_usuario" Association="Self.FK_resposta_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="resposta" EntitySet="resposta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_turma_turma" Association="Self.FK_usuario_turma_turma">
+            <End Role="turma" EntitySet="turma" />
+            <End Role="usuario_turma" EntitySet="usuario_turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_turma_usuario" Association="Self.FK_usuario_turma_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_turma" EntitySet="usuario_turma" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SalaDeAulaModelStoreContainer" CdmEntityContainer="SalaDeAulaEntities">
+          <EntitySetMapping Name="alternativa">
+            <EntityTypeMapping TypeName="SalaDeAulaModel.alternativa">
+              <MappingFragment StoreEntitySet="alternativa">
+                <ScalarProperty Name="codigo_alternativa" ColumnName="codigo_alternativa" />
+                <ScalarProperty Name="codigo_questao" ColumnName="codigo_questao" />
+                <ScalarProperty Name="texto_alternativa" ColumnName="texto_alternativa" />
+                <ScalarProperty Name="correta" ColumnName="correta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="atividade">
+            <EntityTypeMapping TypeName="SalaDeAulaModel.atividade">
+              <MappingFragment StoreEntitySet="atividade">
+                <ScalarProperty Name="codigo_atividade" ColumnName="codigo_atividade" />
+                <ScalarProperty Name="codigo_turma" ColumnName="codigo_turma" />
+                <ScalarProperty Name="nome_atividade" ColumnName="nome_atividade" />
+                <ScalarProperty Name="data_limite" ColumnName="data_limite" />
+                <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mensagem">
+            <EntityTypeMapping TypeName="SalaDeAulaModel.mensagem">
+              <MappingFragment StoreEntitySet="mensagem">
+                <ScalarProperty Name="codigo_mensagem" ColumnName="codigo_mensagem" />
+                <ScalarProperty Name="codigo_turma" ColumnName="codigo_turma" />
+                <ScalarProperty Name="codigo_usuario" ColumnName="codigo_usuario" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+                <ScalarProperty Name="data_postagem" ColumnName="data_postagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questao">
+            <EntityTypeMapping TypeName="SalaDeAulaModel.questao">
+              <MappingFragment StoreEntitySet="questao">
+                <ScalarProperty Name="codigo_questao" ColumnName="codigo_questao" />
+                <ScalarProperty Name="codigo_atividade" ColumnName="codigo_atividade" />
+                <ScalarProperty Name="texto_questao" ColumnName="texto_questao" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resposta">
+            <EntityTypeMapping TypeName="SalaDeAulaModel.resposta">
+              <MappingFragment StoreEntitySet="resposta">
+                <ScalarProperty Name="codigo_resposta" ColumnName="codigo_resposta" />
+                <ScalarProperty Name="codigo_usuario" ColumnName="codigo_usuario" />
+                <ScalarProperty Name="codigo_questao" ColumnName="codigo_questao" />
+                <ScalarProperty Name="codigo_alternativa" ColumnName="codigo_alternativa" />
+                <ScalarProperty Name="data_envio" ColumnName="data_envio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="turma">
+            <EntityTypeMapping TypeName="SalaDeAulaModel.turma">
+              <MappingFragment StoreEntitySet="turma">
+                <ScalarProperty Name="codigo_turma" ColumnName="codigo_turma" />
+                <ScalarProperty Name="nome_turma" ColumnName="nome_turma" />
+                <ScalarProperty Name="token_acesso" ColumnName="token_acesso" />
+                <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="SalaDeAulaModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="codigo_usuario" ColumnName="codigo_usuario" />
+                <ScalarProperty Name="nome_usuario" ColumnName="nome_usuario" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="token_usuario" ColumnName="token_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario_turma">
+            <EntityTypeMapping TypeName="SalaDeAulaModel.usuario_turma">
+              <MappingFragment StoreEntitySet="usuario_turma">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="codigo_usuario" ColumnName="codigo_usuario" />
+                <ScalarProperty Name="codigo_turma" ColumnName="codigo_turma" />
+                <ScalarProperty Name="professor" ColumnName="professor" />
+                <ScalarProperty Name="data_entrada" ColumnName="data_entrada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
