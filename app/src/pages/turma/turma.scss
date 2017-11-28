@@ -8,5 +8,34 @@ page-home {
         margin-top: 30px;
         margin-bottom: 10px;
     }
+	
+	
+       .botao-enviar{
+        margin-top: 10px;
+        margin-bottom: 40px;
+       }
+
+       .mensagem{
+           min-height: 100px;
+       }
+
+       .feed-mensagem{
+           background-color: rgba(211, 210, 210, 0.392);
+           padding: 5px;
+           margin: 5px;
+       }
+
+       h6{
+        margin: 5px;
+       }
+
+       b{ font-size: 14px; }
+
+       i{ font-size: 12px; }
+
+       .corpo-mensagem{
+           padding-left: 5px;
+           font-size: 11px;
+       }
 
 }

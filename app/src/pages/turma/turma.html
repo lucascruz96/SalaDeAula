@@ -1,14 +1,37 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <ion-title style="text-align:center">
+        Mensagens
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>  
+    <ion-item>
+      <p>Mensagem</p>
+      <ion-textarea placeholder="Escreva algo para a turma" class="mensagem"></ion-textarea>
+    </ion-item>
+    
+    <div class="botao-enviar" style="text-align:center">
+      <button ion-button icon-start>
+        Enviar
+      </button>
+    </div>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+    <h6>Atualizações Recentes</h6><hr>
+    <div class="feed-mensagem">
+      <p><b>Aluno 5</b> - <i>28 de Novembro de 2017 às 16:36</i></p>
+      <p class="corpo-mensagem">Mensagem ...</p>
+    </div>
+
+    <div class="feed-mensagem">
+        <p><b>Aluno 1</b> - <i>25 de Novembro de 2017 às 18:12</i></p>
+        <p class="corpo-mensagem">Mensagem ...</p>
+      </div>
+
+      <div class="feed-mensagem">
+          <p><b>Professor X</b> - <i>21 de Novembro de 2017 às 08:02</i></p>
+          <p class="corpo-mensagem">Mensagem ...</p>
+        </div>
+
+  </ion-content>
