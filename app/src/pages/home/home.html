@@ -1,14 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title style="text-align:center">
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  
+  <div class="botoes" style="text-align:center">
+    <button ion-button icon-start style="background-color: rgb(0, 72, 255)">
+      Novo
+    </button><br>
+    <button ion-button icon-end style="background-color: rgba(0, 72, 255, 0.275)">
+      Entrar
+    </button>
+  </div> 
+
+  <ion-content class="lista-turmas">
+    <ion-item-group>
+      <ion-item-divider color="light" style="text-align:center;">Turmas</ion-item-divider>
+      <ion-item>Turma 1</ion-item>
+      <ion-item>Turma 2</ion-item>
+      <ion-item>Turma 3</ion-item>
+    </ion-item-group>
+  </ion-content>
+ 
+  <ion-list>    
+  </ion-list>
 </ion-content>
