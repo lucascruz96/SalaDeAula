@@ -1,6 +1,5 @@
 page-home {
 
-
     button {
         width: 250px;
     }
@@ -25,6 +24,7 @@ page-home {
            box-shadow: 1px 1px 3px #888888;
            padding: 5px;
            margin: 5px;
+           margin-right: 10px;
        }
 
        h6{
@@ -40,4 +40,13 @@ page-home {
            font-size: 13px;
        }
 
+       .respostas{
+        padding-left: 5px;
+        font-size: 13px;
+        }
+
+    .botao-alter{
+        width: 150px;
+        font-size: 13px;
+    }
 }
