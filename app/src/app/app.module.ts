@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { NovaTurmaPage } from '../pages/turma/nova/nova';
 import { EntrarTurmaPage } from '../pages/turma/entrar/entrar';
+import { TurmaPage } from '../pages/turma/turma';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +18,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     LoginPage,
     NovaTurmaPage,
-    EntrarTurmaPage
+    EntrarTurmaPage,
+    TurmaPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     LoginPage,
     NovaTurmaPage,
-    EntrarTurmaPage
+    EntrarTurmaPage,
+    TurmaPage
   ],
   providers: [
     StatusBar,

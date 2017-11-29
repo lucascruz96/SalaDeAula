@@ -39,7 +39,7 @@ webpackEmptyAsyncContext.id = 150;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(195);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -80,9 +80,10 @@ var LoginPage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__turma_nova_nova__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__turma_entrar_entrar__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__turma_turma__ = __webpack_require__(198);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -96,15 +97,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
     function HomePage(navCtrl) {
         this.navCtrl = navCtrl;
         this.novaTurma = __WEBPACK_IMPORTED_MODULE_2__turma_nova_nova__["a" /* NovaTurmaPage */];
         this.entrarTurma = __WEBPACK_IMPORTED_MODULE_3__turma_entrar_entrar__["a" /* EntrarTurmaPage */];
+        this.turmaPage = __WEBPACK_IMPORTED_MODULE_4__turma_turma__["a" /* TurmaPage */];
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/xa0/workspace/SalaDeAula/app/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align:center">\n      Home\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div class="botoes" style="text-align:center">\n    <button ion-button icon-start [navPush]="novaTurma" style="background-color: #5cb85c!important">\n      <ion-icon name="add"></ion-icon>&nbsp;&nbsp; Nova Turma\n    </button>\n    <br>\n    <button ion-button icon-end [navPush]="entrarTurma" style="background-color: #5bc0de!important;">\n      <ion-icon name="contact"></ion-icon>&nbsp;&nbsp; Acessar Turma\n    </button>\n  </div>\n\n  <ion-item-group class="lista-turmas">\n    <ion-item-divider color="" style="text-align:center;">Minhas Turmas</ion-item-divider>\n    <button ion-item class="item-lista" (click)="buttonClick()">\n      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 1\n    </button>\n\n    <button ion-item class="item-lista" (click)="buttonClick()">\n      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 2\n    </button>\n    <button ion-item class="item-lista" (click)="buttonClick()">\n      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 3\n    </button>\n\n  </ion-item-group>\n\n</ion-content>'/*ion-inline-end:"/home/xa0/workspace/SalaDeAula/app/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/xa0/workspace/SalaDeAula/app/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align:center">\n      Home\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div class="botoes" style="text-align:center">\n    <button ion-button icon-start [navPush]="novaTurma" style="background-color: #5cb85c!important">\n      <ion-icon name="add"></ion-icon>&nbsp;&nbsp; Nova Turma\n    </button>\n    <br>\n    <button ion-button icon-end [navPush]="entrarTurma" style="background-color: #5bc0de!important;">\n      <ion-icon name="contact"></ion-icon>&nbsp;&nbsp; Acessar Turma\n    </button>\n  </div>\n\n  <ion-item-group class="lista-turmas">\n    <ion-item-divider color="" style="text-align:center;">Minhas Turmas</ion-item-divider>\n    <button ion-item class="item-lista" [navPush]="turmaPage">\n      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 1\n    </button>\n\n    <button ion-item class="item-lista" [navPush]="turmaPage">\n      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 2\n    </button>\n    <button ion-item class="item-lista" [navPush]="turmaPage">\n      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 3\n    </button>\n\n  </ion-item-group>\n\n</ion-content>'/*ion-inline-end:"/home/xa0/workspace/SalaDeAula/app/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], HomePage);
@@ -121,7 +124,7 @@ var HomePage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NovaTurmaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -156,7 +159,7 @@ var NovaTurmaPage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EntrarTurmaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -189,9 +192,45 @@ var EntrarTurmaPage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TurmaPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TurmaPage = (function () {
+    function TurmaPage(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    TurmaPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-turma',template:/*ion-inline-start:"/home/xa0/workspace/SalaDeAula/app/src/pages/turma/turma.html"*/'<ion-header>\n    <ion-navbar>\n      <ion-title style="text-align:center">\n        Turma\n      </ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>  \n    <ion-item>\n      <p>Mensagem</p>\n      <ion-textarea placeholder="Escreva algo para a turma" class="mensagem"></ion-textarea>\n    </ion-item>\n    \n    <div class="botao-enviar" style="text-align:center">\n      <button ion-button icon-start>\n        Enviar\n      </button>\n    </div>\n\n    <h6>Atualizações Recentes</h6><hr>\n    <div class="feed-mensagem">\n      <p><b>Aluno 5</b> - <i>28 de Novembro de 2017 às 16:36</i></p>\n      <p class="corpo-mensagem">Mensagem ...</p>\n    </div>\n\n    <div class="feed-mensagem">\n        <p><b>Aluno 1</b> - <i>25 de Novembro de 2017 às 18:12</i></p>\n        <p class="corpo-mensagem">Mensagem ...</p>\n      </div>\n\n      <div class="feed-mensagem">\n          <p><b>Professor X</b> - <i>21 de Novembro de 2017 às 08:02</i></p>\n          <p class="corpo-mensagem">Mensagem ...</p>\n        </div>\n\n  </ion-content>'/*ion-inline-end:"/home/xa0/workspace/SalaDeAula/app/src/pages/turma/turma.html"*/
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object])
+    ], TurmaPage);
+    return TurmaPage;
+    var _a;
+}());
+
+//# sourceMappingURL=turma.js.map
+
+/***/ }),
+
+/***/ 199:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(223);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -199,27 +238,29 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 222:
+/***/ 223:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_login_login__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_turma_nova_nova__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_turma_entrar_entrar__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_turma_turma__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(193);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -240,7 +281,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_5__pages_login_login__["a" /* LoginPage */],
                 __WEBPACK_IMPORTED_MODULE_6__pages_turma_nova_nova__["a" /* NovaTurmaPage */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_turma_entrar_entrar__["a" /* EntrarTurmaPage */]
+                __WEBPACK_IMPORTED_MODULE_7__pages_turma_entrar_entrar__["a" /* EntrarTurmaPage */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_turma_turma__["a" /* TurmaPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -254,11 +296,12 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_5__pages_login_login__["a" /* LoginPage */],
                 __WEBPACK_IMPORTED_MODULE_6__pages_turma_nova_nova__["a" /* NovaTurmaPage */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_turma_entrar_entrar__["a" /* EntrarTurmaPage */]
+                __WEBPACK_IMPORTED_MODULE_7__pages_turma_entrar_entrar__["a" /* EntrarTurmaPage */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_turma_turma__["a" /* TurmaPage */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__["a" /* SplashScreen */],
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] }
             ]
         })
@@ -270,13 +313,13 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 265:
+/***/ 266:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(194);
@@ -332,5 +375,5 @@ var MyApp = (function () {
 
 /***/ })
 
-},[198]);
+},[199]);
 //# sourceMappingURL=main.js.map

@@ -25695,6 +25695,47 @@ page-home .item-lista {
   font-size: 11px;
 }
 
+page-turma button {
+  width: 250px;
+}
+
+page-turma .botao {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+page-turma .botao-enviar {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+page-turma .mensagem {
+  min-height: 100px;
+}
+
+page-turma .feed-mensagem {
+  background-color: rgba(211, 210, 210, 0.392);
+  padding: 5px;
+  margin: 5px;
+}
+
+page-turma h6 {
+  margin: 5px;
+}
+
+page-turma b {
+  font-size: 14px;
+}
+
+page-turma i {
+  font-size: 12px;
+}
+
+page-turma .corpo-mensagem {
+  padding-left: 5px;
+  font-size: 11px;
+}
+
 page-entrar button {
   width: 250px;
 }

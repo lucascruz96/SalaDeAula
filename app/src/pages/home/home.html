@@ -20,14 +20,14 @@
 
   <ion-item-group class="lista-turmas">
     <ion-item-divider color="" style="text-align:center;">Minhas Turmas</ion-item-divider>
-    <button ion-item class="item-lista" (click)="buttonClick()">
+    <button ion-item class="item-lista" [navPush]="turmaPage">
       <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 1
     </button>
 
-    <button ion-item class="item-lista" (click)="buttonClick()">
+    <button ion-item class="item-lista" [navPush]="turmaPage">
       <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 2
     </button>
-    <button ion-item class="item-lista" (click)="buttonClick()">
+    <button ion-item class="item-lista" [navPush]="turmaPage">
       <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 3
     </button>
 
