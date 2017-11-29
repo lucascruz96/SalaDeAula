@@ -1,14 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title style="text-align:center">
+      Atividades
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding>  
+  <div class="feed-mensagem" (click)="buttonClick()">
+    <p class="corpo-mensagem"><ion-icon name="attach"></ion-icon>&nbsp;&nbsp;Atividade 1</p>
+  </div>
+
+  <div class="feed-mensagem" (click)="buttonClick()">
+    <p class="corpo-mensagem"><ion-icon name="attach"></ion-icon>&nbsp;&nbsp;Atividade 2</p>
+  </div>
+
+  <div class="feed-mensagem" (click)="buttonClick()">
+    <p class="corpo-mensagem"><ion-icon name="attach"></ion-icon>&nbsp;&nbsp;Atividade 3</p>
+  </div>
+
 </ion-content>
