@@ -1,17 +1,36 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Turma x</ion-title>
+    <ion-title style="text-align:center">
+      Home
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
-  <p>
-  </p>
+  <div class="botoes" style="text-align:center">
+    <button ion-button icon-start style="background-color: #5cb85c!important">
+      <ion-icon name="add"></ion-icon>&nbsp;&nbsp; Nova Turma
+    </button>
+    <br>
+    <button ion-button icon-end style="background-color: #5bc0de!important;">
+      <ion-icon name="contact"></ion-icon>&nbsp;&nbsp; Acessar Turma
+    </button>
+  </div>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-item-group class="lista-turmas">
+    <ion-item-divider color="" style="text-align:center;">Minhas Turmas</ion-item-divider>
+    <button ion-item class="item-lista" (click)="buttonClick()">
+      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 1
+    </button>
+
+    <button ion-item class="item-lista" (click)="buttonClick()">
+      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 2
+    </button>
+    <button ion-item class="item-lista" (click)="buttonClick()">
+      <ion-icon name="pricetag"></ion-icon>&nbsp;&nbsp;Turma 3
+    </button>
+
+  </ion-item-group>
+
 </ion-content>
