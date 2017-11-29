@@ -25694,3 +25694,85 @@ page-home .lista-turmas {
 page-home .item-lista {
   font-size: 11px;
 }
+
+page-entrar button {
+  width: 250px;
+}
+
+page-entrar .botao {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+page-entrar .botao-enviar {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+page-entrar .mensagem {
+  min-height: 100px;
+}
+
+page-entrar .feed-mensagem {
+  background-color: rgba(211, 210, 210, 0.392);
+  padding: 5px;
+  margin: 5px;
+}
+
+page-entrar h6 {
+  margin: 5px;
+}
+
+page-entrar b {
+  font-size: 14px;
+}
+
+page-entrar i {
+  font-size: 12px;
+}
+
+page-entrar .corpo-mensagem {
+  padding-left: 5px;
+  font-size: 11px;
+}
+
+page-nova button {
+  width: 250px;
+}
+
+page-nova .botao {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+page-nova .botao-enviar {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+page-nova .mensagem {
+  min-height: 100px;
+}
+
+page-nova .feed-mensagem {
+  background-color: rgba(211, 210, 210, 0.392);
+  padding: 5px;
+  margin: 5px;
+}
+
+page-nova h6 {
+  margin: 5px;
+}
+
+page-nova b {
+  font-size: 14px;
+}
+
+page-nova i {
+  font-size: 12px;
+}
+
+page-nova .corpo-mensagem {
+  padding-left: 5px;
+  font-size: 11px;
+}

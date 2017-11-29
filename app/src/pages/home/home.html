@@ -9,11 +9,11 @@
 <ion-content padding>
 
   <div class="botoes" style="text-align:center">
-    <button ion-button icon-start style="background-color: #5cb85c!important">
+    <button ion-button icon-start [navPush]="novaTurma" style="background-color: #5cb85c!important">
       <ion-icon name="add"></ion-icon>&nbsp;&nbsp; Nova Turma
     </button>
     <br>
-    <button ion-button icon-end style="background-color: #5bc0de!important;">
+    <button ion-button icon-end [navPush]="entrarTurma" style="background-color: #5bc0de!important;">
       <ion-icon name="contact"></ion-icon>&nbsp;&nbsp; Acessar Turma
     </button>
   </div>
